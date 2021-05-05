@@ -36,7 +36,7 @@ MARIA BARRERA ONETO 18560875
     DBMS_OUTPUT.PUT_LINE('Nombre Empleado: ' || v_nombre || ' ' || v_apaterno || ' ' || v_amaterno);
     DBMS_OUTPUT.PUT_LINE('RUN: ' || :b_rut || '-' || v_dv);
     DBMS_OUTPUT.PUT_LINE('Sueldo: ' || v_sueldo);
-    DBMS_OUTPUT.PUT_LINE('Bonificación Extra: ' || v_bono);
+    DBMS_OUTPUT.PUT_LINE('BonificaciÃ³n Extra: ' || v_bono);
     
  END;
  /*
