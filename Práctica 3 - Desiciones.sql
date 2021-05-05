@@ -130,10 +130,10 @@ BEGIN
     
     
     v_dia_cumpleanno := TO_CHAR(v_fecha_nac,'DD')|| ' de ' || TO_CHAR(v_fecha_nac,'Month');
-    --DBMS_OUTPUT.PUT_LINE('Cumpleaños : '|| v_dia_cumpleanno);
+    --DBMS_OUTPUT.PUT_LINE('CumpleaÃ±os : '|| v_dia_cumpleanno);
     
     IF EXTRACT(MONTH FROM v_fecha_nac) = EXTRACT(MONTH FROM sysdate)+1 THEN
-    --cumpleaños el proximo mes, hay que calcular monto giftcard
+    --cumpleaÃ±os el proximo mes, hay que calcular monto giftcard
     v_monto_giftcard := CASE
                            WHEN v_monto_ahorrado < :t1 THEN :gc1                    -- 900000
                            WHEN v_monto_ahorrado BETWEEN :t1 AND :t2 THEN :gc2      -- 900001 y 2000000
@@ -143,9 +143,9 @@ BEGIN
                        END;
     v_observacion := null;
     ELSE
-        --no cumpleaños el proximo mes
+        --no cumpleaÃ±os el proximo mes
         v_monto_giftcard := null;
-        v_observacion := 'El cliente no está de cumpleaños en el mes procesado';
+        v_observacion := 'El cliente no estÃ¡ de cumpleaÃ±os en el mes procesado';
     END IF;
     
     DELETE FROM cumpleanno_cliente WHERE nro_cliente = v_nro_cliente;
@@ -195,7 +195,7 @@ CASE
         
 END CASE;
 
--- VERIFICAR CUANTOS CREDITOS PIDIO EL AÑO PASADO
+-- VERIFICAR CUANTOS CREDITOS PIDIO EL AÃ‘O PASADO
 
 DBMS_OUTPUT.PUT_LINE('Tipo credito: ' || v_tipo_credito);
 END;
