@@ -1,0 +1,23 @@
+--EN USUARIO ADMIN
+
+CREATE USER Integrado2 IDENTIFIED BY "MDY3131.1nt3gr4d02"
+DEFAULT TABLESPACE "DATA"
+TEMPORARY TABLESPACE "TEMP";
+ALTER USER Integrado2 QUOTA UNLIMITED ON DATA;
+GRANT CREATE SESSION TO Integrado2;
+GRANT "RESOURCE" TO Integrado2;
+ALTER USER Integrado2 DEFAULT ROLE "RESOURCE";
+
+GRANT READ, WRITE ON DIRECTORY DIRE_BLOB TO Integrado2;
+
+-- VINCULAR OBJETO AL DIRECTORIO (SOLO PARA ORACLE CLOUD)
+ BEGIN
+        DBMS_CLOUD.GET_OBJECT(
+            credential_name => 'CREDENCIAL_BLOB',
+            object_uri => 'https://objectstorage.sa-saopaulo-1.oraclecloud.com/p/IPvWv920pRFSKyqMIVargT5hZyIbMzPKUwfE7gnhrPiD52fMfJbiGUsHR1VLuvv3/n/gr2bsmst5zux/b/MiBucket/o/usuario.png',
+            directory_name => 'DIRE_BLOB'
+        );
+END;
+
+SELECT * FROM DBMS_CLOUD.LIST_FILES('DIRE_BLOB')
+ORDER BY object_name;
